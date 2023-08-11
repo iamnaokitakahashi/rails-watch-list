@@ -16,20 +16,20 @@ class BookmarksController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-end
 
-def destroy
-  @bookmark = Bookmark.find(params[:id])
-  @bookmark.destroy
-  redirect_to lists_path, status: :see_other
-end
+  def destroy
+    @bookmark = Bookmark.find(params[:id])
+    @bookmark.destroy
+    redirect_to list_path(@bookmark.list)
+  end
 
-private
+  private
 
-# def list_params
-#   params.require(:list).permit(:name)
-# end
+  # def list_params
+  #   params.require(:list).permit(:name)
+  # end
 
-def bookmark_params
-  params.require(:bookmark).permit(:movie_id, :comment)
+  def bookmark_params
+    params.require(:bookmark).permit(:movie_id, :comment)
+  end
 end
