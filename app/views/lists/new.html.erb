@@ -4,11 +4,7 @@
 <%= simple_form_for(@list) do |f| %>
   <%= f.input :name %>
 `<%= f.input :photo, as: :file %>
-  <%= f.submit %>
-
-  <div>
     <%= f.submit 'Create List' %>
-  </div>
 <% end %>
 
 <%# <p><%= link_to("<- Go Back", lists_path) %>

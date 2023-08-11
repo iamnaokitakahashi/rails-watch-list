@@ -1,12 +1,13 @@
 <%# /lists %>
 <div class="container mt-4">
   <h1>My lists </h1>
-  <ul class="list-group">
+  <ul class="cards">
     <% @lists.each do |list| %>
-      <li class="list-group-item" style="background-image: url(<%=cl_image_path(list.photo.key) if list.photo.attached? %>)">
+      <div class="item card-category" style="background-image: url(<%=cl_image_path(list.photo.key) if list.photo.attached? %>)">
         <%= link_to list.name, list_path(list), class: 'btn btn-secondary' %>
+
         <%= link_to "delete", list_path(list), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{list.name}" } %>
-      </li>
+        </div>
     <% end %>
   </ul>
 

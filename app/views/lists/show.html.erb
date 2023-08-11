@@ -3,13 +3,15 @@
 <h1><%= @list.name %></h1>
 
 <h2>Movies in this List:</h2>
+<div class ="container">
 <ul>
   <% @list.bookmarks.each do |bookmark| %>
     <li><%= bookmark.movie.title %> - Rating: <%= bookmark.movie.rating %>
+    <%= cl_image_tag @list.photo.key, alt: "text" %>
     <%= link_to 'Delete this bookmark', bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-secondary' %></li>
   <% end %>
 </ul>
-
+</div>
 
 <h2>Add a New Bookmark:</h2>
 <%= link_to 'Add Bookmark', new_list_bookmark_path(@list), class: 'btn btn-secondary' %>
