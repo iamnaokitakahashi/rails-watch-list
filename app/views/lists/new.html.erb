@@ -1,16 +1,16 @@
 <%# /list/new %>
 <h1>Create New List</h1>
 
-<%= form_with model: @list, url: lists_path, method: :post do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-    <%= form.input :photo, as: :file %>
-  </div>
+<%= simple_form_for(@list) do |f| %>
+  <%= f.input :name %>
+`<%= f.input :photo, as: :file %>
+  <%= f.submit %>
 
   <div>
     <%= form.submit 'Create List' %>
   </div>
 <% end %>
 
-<%= link_to 'Back to Lists', lists_path(@list), class: 'btn btn-secondary' %>
+<%# <p><%= link_to("<- Go Back", lists_path) %>
+
+<%= link_to '<- Back to Lists', lists_path(@list), class: 'btn btn-secondary' %>
